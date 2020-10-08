@@ -1,4 +1,5 @@
-import react from "React";
+import React from "react";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -7,9 +8,11 @@ import {
 } from "react-router-dom";
 
 import BestProduct from "../Routes/BestProduct";
+import Header from "../Components/Header";
 
 export default () => (
   <Router>
+    <Header />
     <Switch>
       <Route path="/Best" exact component={BestProduct}></Route>
     </Switch>
