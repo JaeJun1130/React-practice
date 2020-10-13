@@ -1,24 +1,34 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const Conatainer = styled.header``;
 
-const List = styled.ul``;
+const List = styled.ul`
+  display: flex;
+  list-style: none;
+`;
 
-const Item = styled.li``;
+const Item = styled.li`
+  width: 70px;
+  text-align: center;
+`;
 
 const SLink = styled(Link)``;
 
-const Header = () => (
+export default withRouter(({ location: { pathname } }) => (
   <Conatainer>
+    {console.log(pathname)}
     <List>
-      <Item>신상품</Item>
-      <Item>베스트</Item>
-      <Item>알뜰쇼핑</Item>
-      <Item>이벤트</Item>
+      <Item current={pathname === "/Best"}>
+        <SLink to="/Best">베스트</SLink>
+      </Item>
+      <Item>
+        <SLink to="/Sale">알뜰쇼핑</SLink>
+      </Item>
+      <Item>
+        <SLink to="/Event">이벤트</SLink>
+      </Item>
     </List>
   </Conatainer>
-);
-
-export default withRouter(Header);
+));
